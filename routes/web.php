@@ -30,7 +30,7 @@ Route::post('/doctor/login', [App\Http\Controllers\DoctorController::class, 'log
 Route::get('/receptionist/login', [App\Http\Controllers\ReceptionistController::class, 'login'])->name('receptionist_login');
 Route::post('receptionist/login', [App\Http\Controllers\ReceptionistController::class, 'loginReceptionist'])->name('loginReceptionist');
 
-Route::resource('doctors', App\Http\Controllers\DoctorController::class);
+    Route::resource('doctors', App\Http\Controllers\DoctorController::class);
 
 Route::resource('receptionists', App\Http\Controllers\ReceptionistController::class);
 
@@ -45,3 +45,6 @@ Route::resource('products', App\Http\Controllers\productController::class);
 Route::resource('recipes', App\Http\Controllers\recipeController::class);
 
 Route::resource('appointments', App\Http\Controllers\AppointmentController::class);
+
+
+Route::resource('reseptionists', App\Http\Controllers\ReseptionistController::class);

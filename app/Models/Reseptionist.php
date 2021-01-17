@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class Doctor
+ * Class Reseptionist
  * @package App\Models
- * @version January 17, 2021, 12:52 pm UTC
+ * @version January 17, 2021, 12:55 pm UTC
  *
  * @property integer $type
  * @property string $name
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $phone
  * @property string $address
  */
-class Doctor extends Model
+class Reseptionist extends Model
 {
     use SoftDeletes;
 

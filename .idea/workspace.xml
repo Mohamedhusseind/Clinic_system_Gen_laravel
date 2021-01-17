@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a739c1b-2f51-4819-820c-64e3aba5f85a" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="3a739c1b-2f51-4819-820c-64e3aba5f85a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReseptionistController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Reseptionist.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ReseptionistFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/model_schemas/Reseptionist.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reseptionists/show_fields.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reseptionists/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/generator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/generator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceptionistController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateReceptionistRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateReseptionistRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateReceptionistRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateReseptionistRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Receptionist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/DoctorRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/DoctorRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/ReceptionistRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ReseptionistRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DoctorFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DoctorFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/model_schemas/Doctor.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/model_schemas/Doctor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctors/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/show_fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctors/show_fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctors/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reseptionists/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reseptionists/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reseptionists/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reseptionists/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reseptionists/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/show_fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/table.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +44,10 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -133,27 +168,26 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1mQRDvfRfY0i6LWPhENQIehDMVU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Clinic_system_Gen_laravel" />
       <recent name="C:\xampp\htdocs\generator\resources\views" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -161,6 +195,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -176,10 +211,28 @@
       <workItem from="1609600768373" duration="7802000" />
       <workItem from="1609751585123" duration="2764000" />
       <workItem from="1609829316003" duration="29186000" />
+      <workItem from="1610807938400" duration="513000" />
+      <workItem from="1610808500413" duration="794000" />
+      <workItem from="1610819560997" duration="3412000" />
+      <workItem from="1610883381367" duration="15046000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

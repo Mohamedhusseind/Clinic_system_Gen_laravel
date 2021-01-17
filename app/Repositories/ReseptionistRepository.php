@@ -2,27 +2,29 @@
 
 namespace App\Repositories;
 
-use App\Models\Receptionist;
+use App\Models\Reseptionist;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ReceptionistRepository
+ * Class ReseptionistRepository
  * @package App\Repositories
- * @version January 2, 2021, 7:53 pm UTC
+ * @version January 17, 2021, 12:55 pm UTC
 */
 
-class ReceptionistRepository extends BaseRepository
+class ReseptionistRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'doctor_id',
+        'type',
         'name',
-        'phone',
-        'address',
         'email',
-        'password'
+        'email_verified_at',
+        'password',
+        'remember_token',
+        'phone',
+        'address'
     ];
 
     /**
@@ -40,6 +42,6 @@ class ReceptionistRepository extends BaseRepository
      **/
     public function model()
     {
-        return Receptionist::class;
+        return Reseptionist::class;
     }
 }

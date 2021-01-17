@@ -1,13 +1,4 @@
 
-<li class="{{ Request::is('doctors*') ? 'active' : '' }}">
-    <a href="{{ route('doctors.index') }}"><i class="fa fa-edit"></i><span>Doctors</span></a>
-</li>
-
-<li class="{{ Request::is('receptionists*') ? 'active' : '' }}">
-    <a href="{{ route('receptionists.index') }}"><i class="fa fa-edit"></i><span>Receptionists</span></a>
-</li>
-
-
 <li class="{{ Request::is('patients*') ? 'active' : '' }}">
     <a href="{{ route('patients.index') }}"><i class="fa fa-edit"></i><span>Patients</span></a>
 </li>
@@ -26,5 +17,13 @@
 
 <li class="{{ Request::is('appointments*') ? 'active' : '' }}">
     <a href="{{ route('appointments.index') }}"><i class="fa fa-edit"></i><span>Appointments</span></a>
+</li>
+
+<li class="{{ Request::is('doctors*') ? 'active' : '' }}">
+    <a href="{{ route('doctors.index') }}"><i class="fa fa-edit"></i><span>Doctors</span></a>
+</li>
+
+<li class="{{ Request::is('reseptionists*') ? 'active' : '' }}">
+    <a href="{{ route('reseptionists.index') }}"><i class="fa fa-edit"></i><span>Reseptionists</span></a>
 </li>
 

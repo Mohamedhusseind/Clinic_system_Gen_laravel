@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Doctor;
+use App\Models\Reseptionist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DoctorFactory extends Factory
+class ReseptionistFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Doctor::class;
+    protected $model = Reseptionist::class;
 
     /**
      * Define the model's default state.

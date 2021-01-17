@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
-use App\Models\Doctor;
-use App\Models\User;
 use App\Repositories\DoctorRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +14,6 @@ use Response;
 
 class DoctorController extends AppBaseController
 {
-    use AuthenticatesUsers;
     /** @var  DoctorRepository */
     private $doctorRepository;
 
@@ -34,27 +29,6 @@ class DoctorController extends AppBaseController
      *
      * @return Response
      */
-    public function loginDoctor()
-    {
-        return view('loginDoctor');
-    }
-    public function login(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-        if(Auth::guard('doctor')->attempt(['email'=>$email,'password'=>$password]))
-        {
-            $doctor = Doctor::where('email','=',$email)->first();
-            $request->session()->put('id',$doctor->id);
-            $request->session()->put('name',$doctor->name);
-            $request->session()->put('created_at',$doctor->created_at);
-            return view('layouts.app',compact(Auth::user()));
-        }
-        else
-        {
-            return redirect()->back()->with('msg',"This Email Not Exist! please try again");
-        }
-    }
     public function index(Request $request)
     {
         $doctors = $this->doctorRepository->all();
@@ -82,13 +56,21 @@ class DoctorController extends AppBaseController
      */
     public function store(CreateDoctorRequest $request)
     {
-        $input = $request->all();
-
+        $input =[
+            'type'=>$request->type,
+            'name'=>$request->name,
+            'email'=>$request->email ,
+            'email_verified_at'=>$request->email_verified_at ,
+            'password'=>Hash::make($request->password),
+            'remember_token'=>$request->remember_token ,
+            'phone'=>$request->phone ,
+            'address'=>$request->address ,
+        ];
         $doctor = $this->doctorRepository->create($input);
+       Flash::success('Doctor saved successfully.');
 
-        Flash::success('Doctor saved successfully.');
+       return redirect(route('doctors.index'));
 
-        return redirect(route('doctors.index'));
     }
 
     /**
