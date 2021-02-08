@@ -58,13 +58,21 @@ class DoctorController extends AppBaseController
      */
     public function store(CreateDoctorRequest $request)
     {
-        $input = $request->all();
-
+        $input =[
+            'type'=>$request->type,
+            'name'=>$request->name,
+            'email'=>$request->email ,
+            'email_verified_at'=>$request->email_verified_at ,
+            'password'=>Hash::make($request->password),
+            'remember_token'=>$request->remember_token ,
+            'phone'=>$request->phone ,
+            'address'=>$request->address ,
+        ];
         $doctor = $this->doctorRepository->create($input);
+       Flash::success('Doctor saved successfully.');
 
-        Flash::success('Doctor saved successfully.');
+       return redirect(route('doctors.index'));
 
-        return redirect(route('doctors.index'));
     }
 
     /**

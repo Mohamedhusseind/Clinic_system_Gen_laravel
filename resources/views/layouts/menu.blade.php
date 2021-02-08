@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @if(Auth::user()->type==0)
 <li class="{{ Request::is('doctors*') ? 'active' : '' }}">
     <a href="{{ route('doctors.index') }}"><i class="fa fa-edit"></i><span>Doctors</span></a>
@@ -24,6 +25,9 @@
     </li>
 @endif
 @if(Auth::user()->type==0 or Auth::user()->type==1 or Auth::user()->type==2 )
+=======
+
+>>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
 <li class="{{ Request::is('patients*') ? 'active' : '' }}">
     <a href="{{ route('patients.index') }}"><i class="fa fa-edit"></i><span>Patients</span></a>
 </li>
@@ -32,4 +36,16 @@
 <li class="{{ Request::is('receptionists*') ? 'active' : '' }}">
     <a href="{{ route('receptionists.index') }}"><i class="fa fa-edit"></i><span>Receptionists</span></a>
 </li>
+<<<<<<< HEAD
 @endif
+=======
+
+<li class="{{ Request::is('doctors*') ? 'active' : '' }}">
+    <a href="{{ route('doctors.index') }}"><i class="fa fa-edit"></i><span>Doctors</span></a>
+</li>
+
+<li class="{{ Request::is('reseptionists*') ? 'active' : '' }}">
+    <a href="{{ route('reseptionists.index') }}"><i class="fa fa-edit"></i><span>Reseptionists</span></a>
+</li>
+
+>>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72

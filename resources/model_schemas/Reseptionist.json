@@ -16,7 +16,6 @@
         "dbType": "integer,false",
         "htmlType": null,
         "validations": "required|integer|integer",
-<<<<<<< HEAD
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -29,8 +28,6 @@
         "dbType": "string,255",
         "htmlType": "text",
         "validations": "required|string|max:255|string|max:255",
-=======
->>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -39,11 +36,7 @@
         "inView": true
     },
     {
-<<<<<<< HEAD
         "name": "email",
-=======
-        "name": "name",
->>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
         "dbType": "string,255",
         "htmlType": "text",
         "validations": "required|string|max:255|string|max:255",
@@ -55,38 +48,6 @@
         "inView": true
     },
     {
-        "name": "phone",
-        "dbType": "string,255",
-        "htmlType": "text",
-        "validations": "required|string|max:255|string|max:255",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-<<<<<<< HEAD
-        "name": "address",
-        "dbType": "string,255",
-        "htmlType": "text",
-        "validations": "required|string|max:255|string|max:255",
-=======
-        "name": "email_verified_at",
-        "dbType": "datetime:nullable",
-        "htmlType": "date",
-        "validations": "nullable|nullable",
->>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-<<<<<<< HEAD
         "name": "email_verified_at",
         "dbType": "datetime:nullable",
         "htmlType": "date",
@@ -99,8 +60,6 @@
         "inView": true
     },
     {
-=======
->>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
         "name": "password",
         "dbType": "string,255",
         "htmlType": "text",
@@ -149,18 +108,6 @@
         "inView": false
     },
     {
-<<<<<<< HEAD
-        "name": "deleted_at",
-        "dbType": "datetime:nullable",
-        "htmlType": "date",
-        "validations": "nullable|nullable",
-        "searchable": false,
-        "fillable": false,
-        "primary": false,
-        "inForm": false,
-        "inIndex": false,
-        "inView": false
-=======
         "name": "phone",
         "dbType": "string,100",
         "htmlType": "text",
@@ -183,6 +130,5 @@
         "inForm": true,
         "inIndex": true,
         "inView": true
->>>>>>> 2de66a7b8df2aa48179fb6dbca349b72710b0b72
     }
 ]

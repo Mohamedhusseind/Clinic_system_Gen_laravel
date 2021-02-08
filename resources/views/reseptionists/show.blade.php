@@ -3,19 +3,15 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Receptionist
+            Reseptionist
         </h1>
     </section>
     <div class="content">
-        @include('adminlte-templates::common.errors')
         <div class="box box-primary">
             <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'receptionists.store']) !!}
-
-                        @include('receptionists.fields')
-
-                    {!! Form::close() !!}
+                <div class="row" style="padding-left: 20px">
+                    @include('reseptionists.show_fields')
+                    <a href="{{ route('reseptionists.index') }}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

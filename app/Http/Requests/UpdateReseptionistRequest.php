@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Receptionist;
+use App\Models\Reseptionist;
 
-class CreateReceptionistRequest extends FormRequest
+class UpdateReseptionistRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,8 @@ class CreateReceptionistRequest extends FormRequest
      */
     public function rules()
     {
-        return Receptionist::$rules;
+        $rules = Reseptionist::$rules;
+        
+        return $rules;
     }
 }
