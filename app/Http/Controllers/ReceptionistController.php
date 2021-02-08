@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateReceptionistRequest;
 use App\Http\Requests\UpdateReceptionistRequest;
-use App\Models\Receptionist;
 use App\Repositories\ReceptionistRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +13,6 @@ use Response;
 
 class ReceptionistController extends AppBaseController
 {
-    use AuthenticatesUsers;
     /** @var  ReceptionistRepository */
     private $receptionistRepository;
 
@@ -31,32 +28,11 @@ class ReceptionistController extends AppBaseController
      *
      * @return Response
      */
-    public function login()
-    {
-        return view('loginReceptionist');
-    }
-    public function loginReceptionist(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-        if(Auth::guard('receptionist')->attempt(['email'=>$email,'password'=>$password]))
-        {
-
-            $receptionist = Receptionist::where('email','=',$email)->first();
-            $request->session()->put('id',$receptionist->id);
-            $request->session()->put('name',$receptionist->name);
-            $request->session()->put('created_at',$receptionist->created_at);
-            return view('layouts.app',compact(auth()->login($receptionist)));
-        }
-        else
-        {
-            echo "Error";
-            //return redirect()->back()->with('msg',"This Email Not Exist! please try again");
-        }
-    }
     public function index(Request $request)
     {
-        $receptionists = $this->receptionistRepository->all();
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
+        $receptionists = $this->receptionistRepository->all()->where('type','2');
 
         return view('receptionists.index')
             ->with('receptionists', $receptionists);
@@ -69,6 +45,8 @@ class ReceptionistController extends AppBaseController
      */
     public function create()
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         return view('receptionists.create');
     }
 
@@ -81,6 +59,8 @@ class ReceptionistController extends AppBaseController
      */
     public function store(CreateReceptionistRequest $request)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $input = $request->all();
 
         $receptionist = $this->receptionistRepository->create($input);
@@ -99,6 +79,8 @@ class ReceptionistController extends AppBaseController
      */
     public function show($id)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $receptionist = $this->receptionistRepository->find($id);
 
         if (empty($receptionist)) {
@@ -119,6 +101,8 @@ class ReceptionistController extends AppBaseController
      */
     public function edit($id)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $receptionist = $this->receptionistRepository->find($id);
 
         if (empty($receptionist)) {
@@ -140,6 +124,8 @@ class ReceptionistController extends AppBaseController
      */
     public function update($id, UpdateReceptionistRequest $request)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $receptionist = $this->receptionistRepository->find($id);
 
         if (empty($receptionist)) {

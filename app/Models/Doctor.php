@@ -5,32 +5,29 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Doctor
  * @package App\Models
- * @version January 2, 2021, 4:31 pm UTC
+ * @version January 7, 2021, 2:02 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection $appointments
- * @property \Illuminate\Database\Eloquent\Collection $products
- * @property \Illuminate\Database\Eloquent\Collection $receptionists
- * @property \Illuminate\Database\Eloquent\Collection $recipes
+ * @property integer $type
  * @property string $name
- * @property string $phone
  * @property string $email
- * @property string $password
+ * @property string $phone
  * @property string $address
+ * @property string|\Carbon\Carbon $email_verified_at
+ * @property string $password
  * @property string $remember_token
  */
-class Doctor extends Authenticatable
+class Doctor extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'doctors';
-
+    public $table = 'users';
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -40,11 +37,13 @@ class Doctor extends Authenticatable
 
 
     public $fillable = [
+        'type',
         'name',
-        'phone',
         'email',
-        'password',
+        'phone',
         'address',
+        'email_verified_at',
+        'password',
         'remember_token'
     ];
 
@@ -55,11 +54,13 @@ class Doctor extends Authenticatable
      */
     protected $casts = [
         'id' => 'integer',
+        'type' => 'integer',
         'name' => 'string',
-        'phone' => 'string',
         'email' => 'string',
-        'password' => 'string',
+        'phone' => 'string',
         'address' => 'string',
+        'email_verified_at' => 'datetime',
+        'password' => 'string',
         'remember_token' => 'string'
     ];
 
@@ -69,45 +70,18 @@ class Doctor extends Authenticatable
      * @var array
      */
     public static $rules = [
+        'type' => 'required|integer',
         'name' => 'required|string|max:255',
-        'phone' => 'required|string|max:255',
         'email' => 'required|string|max:255',
-        'password' => 'required|string|max:255',
+        'phone' => 'required|string|max:255',
         'address' => 'required|string|max:255',
+        'email_verified_at' => 'nullable',
+        'password' => 'required|string|max:255',
         'remember_token' => 'nullable|string|max:100',
         'created_at' => 'nullable',
-        'updated_at' => 'nullable'
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function appointments()
-    {
-        return $this->hasMany(\App\Models\Appointment::class, 'doctor_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function products()
-    {
-        return $this->hasMany(\App\Models\Product::class, 'doctor_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function receptionists()
-    {
-        return $this->hasMany(\App\Models\Receptionist::class, 'doctor_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function recipes()
-    {
-        return $this->hasMany(\App\Models\Recipe::class, 'doctor_id');
-    }
+    
 }

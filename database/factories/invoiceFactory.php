@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\invoice;
+use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class invoiceFactory extends Factory
+class InvoiceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = invoice::class;
+    protected $model = Invoice::class;
 
     /**
      * Define the model's default state.
@@ -29,7 +29,8 @@ class invoiceFactory extends Factory
         'reservation_price' => $this->faker->word,
         'phone' => $this->faker->word,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s')
+        'updated_at' => $this->faker->date('Y-m-d H:i:s'),
+        'deleted_at' => $this->faker->date('Y-m-d H:i:s')
         ];
     }
 }

@@ -108,6 +108,18 @@
         "inView": false
     },
     {
+        "name": "deleted_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
         "type": "relation",
         "relation": "mt1,Patient,patient_id"
     },

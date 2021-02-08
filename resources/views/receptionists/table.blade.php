@@ -2,24 +2,26 @@
     <table class="table" id="receptionists-table">
         <thead>
             <tr>
-                <th>Doctor Id</th>
         <th>Name</th>
+        <th>Email</th>
         <th>Phone</th>
         <th>Address</th>
-        <th>Email</th>
+        <th>Email Verified At</th>
         <th>Password</th>
+        <th>Remember Token</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($receptionists as $receptionist)
             <tr>
-                <td>{{ $receptionist->doctor_id }}</td>
             <td>{{ $receptionist->name }}</td>
+            <td>{{ $receptionist->email }}</td>
             <td>{{ $receptionist->phone }}</td>
             <td>{{ $receptionist->address }}</td>
-            <td>{{ $receptionist->email }}</td>
+            <td>{{ $receptionist->email_verified_at }}</td>
             <td>{{ $receptionist->password }}</td>
+            <td>{{ $receptionist->remember_token }}</td>
                 <td>
                     {!! Form::open(['route' => ['receptionists.destroy', $receptionist->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

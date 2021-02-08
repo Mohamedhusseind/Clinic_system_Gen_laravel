@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\invoice;
+use App\Models\Invoice;
 
-class CreateinvoiceRequest extends FormRequest
+class CreateInvoiceRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class CreateinvoiceRequest extends FormRequest
      */
     public function rules()
     {
-        return invoice::$rules;
+        return Invoice::$rules;
     }
 }

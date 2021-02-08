@@ -1,0 +1,312 @@
+jQuery(function ($) {
+
+  var $openSnippetModal = null;
+
+  var latestPackage = {};
+  var packages = [];
+  var technology = getTechnology();
+  var pathName = window.location.pathname;
+  var pathParts = pathName.split('/');
+  var forbiddenTechs = ['angular', 'react', 'vue'];
+
+  if (forbiddenTechs.indexOf(pathParts[1]) === -1 && forbiddenTechs.indexOf(pathParts[2]) === -1 && forbiddenTechs.indexOf(pathParts[3]) === -1 || technology === 'Standard') {
+
+    registerPrismButton();
+  }
+
+  document.addEventListener('dpl_loaded', function () {
+
+    setOpenSnippetsModalEl();
+    bindSnippetsModalEvents();
+  });
+
+  function setOpenSnippetsModalEl() {
+
+    $openSnippetModal = $('#modalOpenSnippet');
+
+    if (!$openSnippetModal.length) {
+      $openSnippetModal = $('#modalOpenSnippetRestricted');
+    }
+  }
+
+  function bindSnippetsModalEvents() {
+
+    $('main').on('click', '.export-to-snippet', function (e) {
+
+      e.preventDefault();
+
+      var $this = $(this);
+      var $navigation = $this.closest('.docs-pills').find('ul');
+
+      if (!$navigation.length) {
+
+        $navigation = $this.closest('.tab-content').siblings('ul');
+      }
+
+      var code = getSnippetCode($navigation);
+
+      showPreloader();
+      $openSnippetModal.modal();
+
+      $.ajax({
+        url: snippets_object.wp_ajaxurl,
+        method: 'POST',
+        data: {
+          action: 'ajax_is_user_logged_in'
+        }
+      })
+        .done(function (response) {
+
+          response = typeof response === 'string' ? JSON.parse(response) : response;
+
+          loadSortedPackages(function (packages) {
+
+            setLatestPackage(packages);
+
+            var snippet = prepareCreatePayload(code);
+
+            if (response.loggedin) {
+
+              if (window.localStorage.getItem('userToken')) {
+
+                saveSnippet(response, snippet);
+              } else {
+
+                getUserToken(function () {
+
+                  saveSnippet(response, snippet)
+                });
+              }
+
+            } else {
+
+              saveGuestSnippet(response, snippet);
+            }
+          });
+        })
+        .fail(console.error);
+    });
+
+    $('a.open-snippet').on('click', function closeModal(e) {
+      $openSnippetModal.modal('hide');
+    });
+
+    $('.auth-modal-toggle').on('click', function () {
+      $openSnippetModal.modal('hide');
+    });
+  }
+
+  function setLatestPackage(packages) {
+
+    const technology = getTechnology();
+
+    latestPackage = packages.filter(function (pack) {
+
+      return pack.type === 'PRO' && pack.technology === technology;
+    })[0];
+  }
+
+  function getSnippetCode($navigation) {
+
+    var code;
+    var result = {
+      html: '',
+      css: '',
+      javascript: ''
+    };
+
+    if (technology === 'Standard') {
+
+      code = result;
+    } else {
+
+      throw new Error('Unknown technology');
+    }
+
+    $navigation.find('.nav-link').each(function () {
+
+      var $link = $(this);
+      code[$link.text().toLowerCase()] = $('#' + $link.attr('href').split('#')[1]).find('pre').text();
+    });
+
+    if (technology === 'Standard') {
+
+      result = code;
+    }
+
+    return result;
+  }
+
+  function prepareCreatePayload(code) {
+
+    return {
+      packageId: latestPackage.package_id.toString(),
+      title: 'New snippet ' + Date.now().toString().substr(-3),
+      description: 'Forked from ' + window.location.href,
+      html: code.html,
+      css: code.css,
+      js: code.javascript,
+      status: 3
+    };
+  }
+
+  function saveGuestSnippet(user, snippet) {
+
+    var technology = encodeURIComponent(latestPackage.technology).toLowerCase();
+    var username = 'temp';
+    var queryString = '?action=prism_export';
+
+    createGuestSnippet(snippet, function (response) {
+
+      $openSnippetModal.find('a.open-snippet').attr('href', '/snippets/' + technology + '/' + username + '/' + response.insertId + queryString);
+      hidePreloader();
+    });
+  }
+
+  function createGuestSnippet(data, callback) {
+
+    $.ajax({
+      url: '/api/snippets/' + latestPackage.technology.toLowerCase() + '/temp/snippets/temp/create',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(data)
+    }).done(callback).fail(console.error);
+  }
+
+  function saveSnippet(user, snippet) {
+
+    var technology = encodeURIComponent(latestPackage.technology).toLowerCase();
+    var username = user.current_user.user_nicename;
+
+    createSnippet(user.current_user, snippet, function (response) {
+
+      if (response) {
+
+        $openSnippetModal.find('a.open-snippet').attr('href', '/snippets/' + technology + '/' + username + '/' + response.insertId);
+        hidePreloader();
+      } else {
+
+        getUserToken(function () {
+
+          saveSnippet(user, snippet);
+        });
+      }
+    });
+  }
+
+  function createSnippet(user, data, callback) {
+
+    $.ajax({
+      url: '/api/snippets/' + latestPackage.technology.toLowerCase() + '/' + user.user_nicename + '/snippets/create',
+      method: 'POST',
+      contentType: 'application/json',
+      headers: {
+        'Authorization': 'Bearer ' + window.localStorage.getItem('userToken')
+      },
+      data: JSON.stringify(data)
+    }).done(callback).fail(console.error);
+  }
+
+  function getUserToken(callback) {
+
+    $.ajax({
+      url: '/api/snippets/user/auth',
+      method: 'POST',
+      contentType: 'application/json'
+    }).done(function (data) {
+
+      window.localStorage.setItem('userToken', data.token);
+      callback();
+    }).fail(console.error);
+  }
+
+  function showPreloader() {
+
+    $(".mdb-snippets-prepare-text").removeClass('d-none');
+    $(".mdb-snippets-ready-text").addClass('d-none');
+    $(".open-snippet").addClass('disabled');
+    $(".open-snippet").find('.spinner-border').removeClass('d-none');
+  }
+
+  function hidePreloader() {
+
+    $(".mdb-snippets-prepare-text").addClass('d-none');
+    $(".mdb-snippets-ready-text").removeClass('d-none');
+    $(".open-snippet").removeClass('disabled');
+    $(".open-snippet").find('.spinner-border').addClass('d-none');
+  }
+
+  function loadSortedPackages(callback) {
+
+    $.ajax({
+      url: '/api/snippets/snippets/packages/read',
+      method: 'GET'
+    }).done(function (response) {
+
+      var technologiesOptionsOrder = {'jQuery': 0, 'Angular': 1, 'React': 2, 'Vue': 3, 'Standard': 4};
+
+      packages = response
+        .sort(function (a, b) {
+
+          if (technologiesOptionsOrder[a.technology] < technologiesOptionsOrder[b.technology]) return -1;
+          if (technologiesOptionsOrder[a.technology] > technologiesOptionsOrder[b.technology]) return 1;
+
+          return b.version.localeCompare(a.version, undefined, {
+            numeric: true
+          });
+        });
+
+      callback(packages);
+    }).fail(console.error);
+  }
+
+  function getTechnology() {
+
+    var pathName = window.location.pathname;
+
+    if ((/(standard)/g).test(pathName)) {
+
+      return 'Standard';
+    } else if ((/vue/g).test(pathName)) {
+
+      return 'Vue';
+    } else if ((/react/g).test(pathName)) {
+
+      return 'React';
+    } else if ((/angular/g).test(pathName)) {
+
+      return 'Angular'
+    }
+
+    return undefined;
+  }
+
+  function registerPrismButton() {
+
+    Prism.plugins.toolbar.registerButton('export-to-snippet', function (env) {
+
+      if ($(env.element).closest('pre').data('editor') === false) {
+        return;
+      }
+
+      var button = document.createElement('a');
+      button.innerHTML = 'Open in MDB Editor';
+      button.classList = 'btn btn-dark btn-sm export-to-snippet';
+
+      return button;
+    });
+
+    $(document).on('DOMNodeInserted', function (e) {
+
+      if ($(e.target).hasClass('toolbar')) {
+
+        if ($(e.target).prev().data('editor') === false) {
+
+          return;
+        }
+
+        $(e.target).find('.btn-copy-code').css('right', 165);
+      }
+    });
+  }
+});

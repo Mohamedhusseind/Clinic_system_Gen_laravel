@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class invoice
+ * Class Invoice
  * @package App\Models
- * @version January 4, 2021, 9:46 am UTC
+ * @version January 7, 2021, 2:12 pm UTC
  *
  * @property \App\Models\Patient $patient
  * @property \App\Models\Receptionist $reception
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $reservation_price
  * @property string $phone
  */
-class invoice extends Model
+class Invoice extends Model
 {
     use SoftDeletes;
 
@@ -73,7 +73,8 @@ class invoice extends Model
         'reservation_price' => 'required|string|max:255',
         'phone' => 'required|string|max:255',
         'created_at' => 'required',
-        'updated_at' => 'required'
+        'updated_at' => 'required',
+        'deleted_at' => 'nullable'
     ];
 
     /**

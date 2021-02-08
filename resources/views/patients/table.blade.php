@@ -2,7 +2,7 @@
     <table class="table" id="patients-table">
         <thead>
             <tr>
-                <th>Reception Id</th>
+                <th>Created By</th>
         <th>Patient Name</th>
         <th>Status</th>
         <th>Age</th>
@@ -15,7 +15,7 @@
         <tbody>
         @foreach($patients as $patient)
             <tr>
-                <td>{{ $patient->reception_id }}</td>
+                <td>{{ $patient->created_by }}</td>
             <td>{{ $patient->patient_name }}</td>
             <td>{{ $patient->status }}</td>
             <td>{{ $patient->age }}</td>

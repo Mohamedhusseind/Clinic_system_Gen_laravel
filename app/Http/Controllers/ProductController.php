@@ -8,9 +8,10 @@ use App\Repositories\productRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
-class productController extends AppBaseController
+class ProductController extends AppBaseController
 {
     /** @var  productRepository */
     private $productRepository;
@@ -27,8 +28,11 @@ class productController extends AppBaseController
      *
      * @return Response
      */
+
     public function index(Request $request)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $products = $this->productRepository->all();
 
         return view('products.index')
@@ -42,6 +46,8 @@ class productController extends AppBaseController
      */
     public function create()
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         return view('products.create');
     }
 
@@ -54,6 +60,8 @@ class productController extends AppBaseController
      */
     public function store(CreateproductRequest $request)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $input = $request->all();
 
         $product = $this->productRepository->create($input);
@@ -72,6 +80,8 @@ class productController extends AppBaseController
      */
     public function show($id)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
@@ -92,6 +102,8 @@ class productController extends AppBaseController
      */
     public function edit($id)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
@@ -113,6 +125,8 @@ class productController extends AppBaseController
      */
     public function update($id, UpdateproductRequest $request)
     {
+        if(Auth::user()->type != [0,1])
+        { return redirect()->back();}
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {

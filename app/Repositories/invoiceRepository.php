@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\invoice;
+use App\Models\Invoice;
 use App\Repositories\BaseRepository;
 
 /**
- * Class invoiceRepository
+ * Class InvoiceRepository
  * @package App\Repositories
- * @version January 4, 2021, 9:46 am UTC
+ * @version January 7, 2021, 2:12 pm UTC
 */
 
-class invoiceRepository extends BaseRepository
+class InvoiceRepository extends BaseRepository
 {
     /**
      * @var array
@@ -40,6 +40,6 @@ class invoiceRepository extends BaseRepository
      **/
     public function model()
     {
-        return invoice::class;
+        return Invoice::class;
     }
 }

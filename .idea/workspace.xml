@@ -1,7 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a739c1b-2f51-4819-820c-64e3aba5f85a" name="Default Changelist" comment="" />
+    <list default="true" id="3a739c1b-2f51-4819-820c-64e3aba5f85a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/indexApp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceptionistController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/invoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/productController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/recipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateDoctorRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreatePatientRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateReceptionistRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateinvoiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateinvoiceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateDoctorRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdatePatientRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateReceptionistRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateinvoiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateinvoiceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Doctor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Patient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Receptionist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/DoctorRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/PatientRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/ReceptionistRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/invoiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/invoiceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DoctorFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DoctorFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/PatientFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PatientFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ReceptionistFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ReceptionistFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/invoiceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/invoiceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/model_schemas/Doctor.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/model_schemas/Doctor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/model_schemas/Patient.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/model_schemas/Patient.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/model_schemas/Receptionist.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/model_schemas/Receptionist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/model_schemas/invoice.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/model_schemas/invoice.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/show.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/show_fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/doctors/table.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loginAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loginAdmin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loginReceptionist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loginReceptionist.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loginpage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/show.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/show_fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patients/table.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/show.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/show_fields.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionists/table.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +84,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -133,13 +207,16 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1mQRDvfRfY0i6LWPhENQIehDMVU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../clinc" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\generator\resources\views\layouts" />
       <recent name="C:\xampp\htdocs\generator\resources\views" />
     </key>
   </component>
@@ -176,10 +253,28 @@
       <workItem from="1609600768373" duration="7802000" />
       <workItem from="1609751585123" duration="2764000" />
       <workItem from="1609829316003" duration="29186000" />
+      <workItem from="1609894827444" duration="477000" />
+      <workItem from="1609925253564" duration="18903000" />
+      <workItem from="1609967024954" duration="6500000" />
+      <workItem from="1610003650601" duration="23399000" />
+      <workItem from="1610059142839" duration="57000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

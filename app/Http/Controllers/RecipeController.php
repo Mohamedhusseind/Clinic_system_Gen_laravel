@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class recipeController extends AppBaseController
+class RecipeController extends AppBaseController
 {
     /** @var  recipeRepository */
     private $recipeRepository;

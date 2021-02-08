@@ -16,6 +16,15 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return route('login');
+            /*switch ('guard')
+            {
+                case 'web':
+                    return route('login');
+                case 'doctor':
+                    return route('loginDoctor');
+                case 'receptionist':
+                    return route('loginReceptionist');
+            }*/
         }
     }
 }

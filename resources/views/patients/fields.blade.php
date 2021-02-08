@@ -1,7 +1,7 @@
-<!-- Reception Id Field -->
+<!-- Created By Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('reception_id', 'Reception Id:') !!}
-    {!! Form::number('reception_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('created_by', 'Created By:') !!}
+    {!! Form::number('created_by', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Patient Name Field -->

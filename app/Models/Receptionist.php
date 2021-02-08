@@ -5,31 +5,29 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Receptionist
  * @package App\Models
- * @version January 2, 2021, 7:53 pm UTC
+ * @version January 7, 2021, 2:08 pm UTC
  *
- * @property \App\Models\Doctor $doctor
- * @property \Illuminate\Database\Eloquent\Collection $invoices
- * @property \Illuminate\Database\Eloquent\Collection $patients
- * @property integer $doctor_id
+ * @property integer $type
  * @property string $name
+ * @property string $email
  * @property string $phone
  * @property string $address
- * @property string $email
+ * @property string|\Carbon\Carbon $email_verified_at
  * @property string $password
+ * @property string $remember_token
  */
-class Receptionist extends Authenticatable
+class Receptionist extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'receptionists';
-
+    public $table = 'users';
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -39,12 +37,14 @@ class Receptionist extends Authenticatable
 
 
     public $fillable = [
-        'doctor_id',
+        'type',
         'name',
+        'email',
         'phone',
         'address',
-        'email',
-        'password'
+        'email_verified_at',
+        'password',
+        'remember_token'
     ];
 
     /**
@@ -54,12 +54,14 @@ class Receptionist extends Authenticatable
      */
     protected $casts = [
         'id' => 'integer',
-        'doctor_id' => 'integer',
+        'type' => 'integer',
         'name' => 'string',
+        'email' => 'string',
         'phone' => 'string',
         'address' => 'string',
-        'email' => 'string',
-        'password' => 'string'
+        'email_verified_at' => 'datetime',
+        'password' => 'string',
+        'remember_token' => 'string'
     ];
 
     /**
@@ -68,35 +70,18 @@ class Receptionist extends Authenticatable
      * @var array
      */
     public static $rules = [
-        'doctor_id' => 'required',
+        'type' => 'required|integer',
         'name' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
         'phone' => 'required|string|max:255',
         'address' => 'required|string|max:255',
-        'email' => 'required|string|max:255',
-        'password' => 'required|string|max:255'
+        'email_verified_at' => 'nullable',
+        'password' => 'required|string|max:255',
+        'remember_token' => 'nullable|string|max:100',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function doctor()
-    {
-        return $this->belongsTo(\App\Models\Doctor::class, 'doctor_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function invoices()
-    {
-        return $this->hasMany(\App\Models\Invoice::class, 'reception_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function patients()
-    {
-        return $this->hasMany(\App\Models\Patient::class, 'reception_id');
-    }
+    
 }

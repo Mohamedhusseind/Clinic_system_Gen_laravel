@@ -28,7 +28,7 @@
 </head>
 
 <body class="skin-blue sidebar-mini">
-@if (Auth::guard('receptionist','doctor','web'))
+@if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
@@ -52,29 +52,31 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src={{asset('assets/img/profile/'.Auth::user()->image)}}
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{{ Session::get('name') }}</span>
+                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src={{asset('assets/img/profile/'.Auth::user()->image)}}
                                          class="img-circle" alt="User Image"/>
                                     <p>
-                                        {{ Session::get('name') }}
+                                        {{Auth::user()->name}}<br>
                                         <!--
                                             <small>Member since /* Session::get('created_at')->format('M. Y') */</small>
 
                                         <small>Member since /* Auth::user()->created_at->format('M. Y') */</small>
                                         -->
+                                        {{Auth::user()->created_at}}
+
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="{{route('profile')}}" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"

@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateinvoiceRequest;
-use App\Http\Requests\UpdateinvoiceRequest;
-use App\Repositories\invoiceRepository;
+use App\Http\Requests\CreateInvoiceRequest;
+use App\Http\Requests\UpdateInvoiceRequest;
+use App\Repositories\InvoiceRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class invoiceController extends AppBaseController
+class InvoiceController extends AppBaseController
 {
-    /** @var  invoiceRepository */
+    /** @var  InvoiceRepository */
     private $invoiceRepository;
 
-    public function __construct(invoiceRepository $invoiceRepo)
+    public function __construct(InvoiceRepository $invoiceRepo)
     {
         $this->invoiceRepository = $invoiceRepo;
     }
 
     /**
-     * Display a listing of the invoice.
+     * Display a listing of the Invoice.
      *
      * @param Request $request
      *
@@ -36,7 +36,7 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new invoice.
+     * Show the form for creating a new Invoice.
      *
      * @return Response
      */
@@ -46,13 +46,13 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Store a newly created invoice in storage.
+     * Store a newly created Invoice in storage.
      *
-     * @param CreateinvoiceRequest $request
+     * @param CreateInvoiceRequest $request
      *
      * @return Response
      */
-    public function store(CreateinvoiceRequest $request)
+    public function store(CreateInvoiceRequest $request)
     {
         $input = $request->all();
 
@@ -64,7 +64,7 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Display the specified invoice.
+     * Display the specified Invoice.
      *
      * @param int $id
      *
@@ -84,7 +84,7 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified invoice.
+     * Show the form for editing the specified Invoice.
      *
      * @param int $id
      *
@@ -104,14 +104,14 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Update the specified invoice in storage.
+     * Update the specified Invoice in storage.
      *
      * @param int $id
-     * @param UpdateinvoiceRequest $request
+     * @param UpdateInvoiceRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateinvoiceRequest $request)
+    public function update($id, UpdateInvoiceRequest $request)
     {
         $invoice = $this->invoiceRepository->find($id);
 
@@ -129,7 +129,7 @@ class invoiceController extends AppBaseController
     }
 
     /**
-     * Remove the specified invoice from storage.
+     * Remove the specified Invoice from storage.
      *
      * @param int $id
      *

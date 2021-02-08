@@ -12,7 +12,7 @@
         "inView": false
     },
     {
-        "name": "reception_id",
+        "name": "created_by",
         "dbType": "bigInteger,false,true",
         "htmlType": null,
         "validations": "required",
@@ -133,7 +133,7 @@
     },
     {
         "type": "relation",
-        "relation": "mt1,Receptionist,reception_id"
+        "relation": "mt1,Receptionist,created_by"
     },
     {
         "type": "relation",

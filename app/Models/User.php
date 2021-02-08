@@ -2,42 +2,85 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+/**
+ * Class user
+ * @package App\Models
+ * @version January 7, 2021, 11:31 am UTC
+ *
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property string $address
+ * @property string|\Carbon\Carbon $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property integer $type
+ */
+class user extends Model
 {
-    use HasFactory, Notifiable;
+    use SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
+    use HasFactory;
+
+    public $table = 'users';
+    
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+
+    protected $dates = ['deleted_at'];
+
+
+
+    public $fillable = [
         'name',
         'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
+        'phone',
+        'address',
+        'email_verified_at',
         'password',
         'remember_token',
+        'type'
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be casted to native types.
      *
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'string',
+        'phone' => 'string',
+        'address' => 'string',
         'email_verified_at' => 'datetime',
+        'password' => 'string',
+        'remember_token' => 'string',
+        'type' => 'integer'
     ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
+        'phone' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'email_verified_at' => 'nullable',
+        'password' => 'required|string|max:255',
+        'remember_token' => 'nullable|string|max:100',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'type' => 'required|integer'
+    ];
+
+    
 }

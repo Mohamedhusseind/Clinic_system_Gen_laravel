@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Patient
  * @package App\Models
- * @version January 2, 2021, 8:23 pm UTC
+ * @version January 7, 2021, 2:22 pm UTC
  *
- * @property \App\Models\Receptionist $reception
+ * @property \App\Models\Receptionist $createdBy
  * @property \Illuminate\Database\Eloquent\Collection $appointments
  * @property \Illuminate\Database\Eloquent\Collection $invoices
  * @property \Illuminate\Database\Eloquent\Collection $recipes
- * @property integer $reception_id
+ * @property integer $created_by
  * @property string $patient_name
  * @property string $status
  * @property string $age
@@ -40,7 +40,7 @@ class Patient extends Model
 
 
     public $fillable = [
-        'reception_id',
+        'created_by',
         'patient_name',
         'status',
         'age',
@@ -56,7 +56,7 @@ class Patient extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'reception_id' => 'integer',
+        'created_by' => 'integer',
         'patient_name' => 'string',
         'status' => 'string',
         'age' => 'string',
@@ -71,7 +71,7 @@ class Patient extends Model
      * @var array
      */
     public static $rules = [
-        'reception_id' => 'required',
+        'created_by' => 'required',
         'patient_name' => 'required|string|max:255',
         'status' => 'required|string|max:255',
         'age' => 'required|string|max:255',
@@ -86,9 +86,9 @@ class Patient extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function reception()
+    public function createdBy()
     {
-        return $this->belongsTo(\App\Models\Receptionist::class, 'reception_id');
+        return $this->belongsTo(\App\Models\Receptionist::class, 'created_by');
     }
 
     /**

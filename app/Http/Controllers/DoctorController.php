@@ -4,21 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
-use App\Models\Doctor;
-use App\Models\User;
 use App\Repositories\DoctorRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Response;
 
 class DoctorController extends AppBaseController
 {
-    use AuthenticatesUsers;
     /** @var  DoctorRepository */
     private $doctorRepository;
 
@@ -34,31 +28,11 @@ class DoctorController extends AppBaseController
      *
      * @return Response
      */
-    public function loginDoctor()
-    {
-        return view('loginDoctor');
-    }
-    public function login(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-        if(Auth::guard('doctor')->attempt(['email'=>$email,'password'=>$password]))
-        {
-            $doctor = Doctor::where('email','=',$email)->first();
-            $request->session()->put('id',$doctor->id);
-            $request->session()->put('name',$doctor->name);
-            $request->session()->put('created_at',$doctor->created_at);
-            return view('layouts.app',compact(Auth::user()));
-        }
-        else
-        {
-            return redirect()->back()->with('msg',"This Email Not Exist! please try again");
-        }
-    }
     public function index(Request $request)
     {
-        $doctors = $this->doctorRepository->all();
-
+        $doctors = $this->doctorRepository->all()->where('type',1);
+        if(Auth::user()->type != 0)
+        { return redirect()->back();}
         return view('doctors.index')
             ->with('doctors', $doctors);
     }
@@ -70,6 +44,8 @@ class DoctorController extends AppBaseController
      */
     public function create()
     {
+        if(Auth::user()->type != 0)
+        { return redirect()->back();}
         return view('doctors.create');
     }
 
@@ -100,6 +76,8 @@ class DoctorController extends AppBaseController
      */
     public function show($id)
     {
+        if(Auth::user()->type != 0)
+        { return redirect()->back();}
         $doctor = $this->doctorRepository->find($id);
 
         if (empty($doctor)) {
@@ -120,6 +98,8 @@ class DoctorController extends AppBaseController
      */
     public function edit($id)
     {
+        if(Auth::user()->type != 0)
+        { return redirect()->back();}
         $doctor = $this->doctorRepository->find($id);
 
         if (empty($doctor)) {
@@ -141,6 +121,8 @@ class DoctorController extends AppBaseController
      */
     public function update($id, UpdateDoctorRequest $request)
     {
+        if(Auth::user()->type != 0)
+        { return redirect()->back();}
         $doctor = $this->doctorRepository->find($id);
 
         if (empty($doctor)) {
